@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Resume Generator</title>
+</head>
+<body>
+    <h1>Resume Generator</h1>
+    <div class="container" id="resume">
+            <div class="form-info">
+                <span>Your Name</span>
+                <input type="text" name="" id="form-name" placeholder="Enter your name.">
+                
+            </div>
+
+            <div class="form-info">
+                <span>Your Contact No.</span>
+                <input type="text" name="" id="form-contact" placeholder="Enter your Contact No.">
+                
+            </div>
+
+            <div class="form-info">
+                <span>Your Email</span>
+                <input type="text" name="" id="form-email" placeholder="Enter your Email.">
+                
+            </div>
+
+            <div class="form-info">
+                <span>Select a Profile Photo</span>
+                <input type="file" name="" id="form-pfp">
+                
+            </div>
+
+            <div class="form-info">
+                <span>Skill Set</span>
+                <input type="text" id="skill">
+                
+            </div>
+
+            <div class="form-info">
+                <span>Academic Qualifictaions </span>
+                <input type="text" id="acad" cols="30" rows="5">
+            
+                
+            </div>
+
+            <div class="form-info">
+                <button onclick="Resume()">Generate Resume</button>
+            </div>
+
+            
+
+    </div>
+
+
+<div class="resume-template" id="resume-template">
+    <div class="resume-left">
+        <div>
+            <h1 id="name-r" class="text-center">Soham Chawla</h1>
+    
+        <div>
+        <img id="profile-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F24-248253_user-profile-default-image-png-clipart-png-download.png&f=1&nofb=1&ipt=e084b5d01610606b35ce95d6a1c56368d325cfc0b20a6432e2ce9133d9cbc715&ipo=images"/>
+        <p id="contact-r">9876543210</p>
+        <p id="email-r">asdf@gmail.com</p>
+    </div>
+</div>
+    </div>
+    
+    <div class="resume-right">
+        <h3>Skill Set</h3>
+        <p id="skill-r">aaaaaaaaaaa</p>
+        
+        <h3>Academic Qualifications</h3>
+        <p id="acad-r">aaaaaaaaaa</p>
+    </div>
+    
+    <div>
+        <button onclick="print()">Print Resume</button>
+    </div>
+</div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
