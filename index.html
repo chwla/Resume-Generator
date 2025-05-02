@@ -3,85 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume Builder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <title>Resume Generator</title>
 </head>
 <body>
-    <h1>Resume Generator</h1>
-    <div class="container" id="resume">
-            <div class="form-info">
-                <span>Your Name</span>
-                <input type="text" name="" id="form-name" placeholder="Enter your name.">
-                
-            </div>
-
-            <div class="form-info">
-                <span>Your Contact No.</span>
-                <input type="text" name="" id="form-contact" placeholder="Enter your Contact No.">
-                
-            </div>
-
-            <div class="form-info">
-                <span>Your Email</span>
-                <input type="text" name="" id="form-email" placeholder="Enter your Email.">
-                
-            </div>
-
-            <div class="form-info">
-                <span>Select a Profile Photo</span>
-                <input type="file" name="" id="form-pfp">
-                
-            </div>
-
-            <div class="form-info">
-                <span>Skill Set</span>
-                <input type="text" id="skill">
-                
-            </div>
-
-            <div class="form-info">
-                <span>Academic Qualifictaions </span>
-                <input type="text" id="acad" cols="30" rows="5">
-            
-                
-            </div>
-
-            <div class="form-info">
-                <button onclick="Resume()">Generate Resume</button>
-            </div>
-
-            
-
+    <div class="hero">
+        <div class="container">
+            <h1 class="app-title">Professional Resume Builder</h1>
+            <p class="app-subtitle">Create a stunning resume in minutes</p>
+        </div>
     </div>
 
+    <div class="container">
+        <!-- Resume Form Section -->
+        <div class="panel" id="resume-form">
+            <div class="panel-header">
+                <h2>Fill Your Details</h2>
+                <p>Complete all sections to generate your personalized resume</p>
+            </div>
 
-<div class="resume-template" id="resume-template">
-    <div class="resume-left">
-        <div>
-            <h1 id="name-r" class="text-center">Soham Chawla</h1>
-    
-        <div>
-        <img id="profile-img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F24-248253_user-profile-default-image-png-clipart-png-download.png&f=1&nofb=1&ipt=e084b5d01610606b35ce95d6a1c56368d325cfc0b20a6432e2ce9133d9cbc715&ipo=images"/>
-        <p id="contact-r">9876543210</p>
-        <p id="email-r">asdf@gmail.com</p>
-    </div>
-</div>
-    </div>
-    
-    <div class="resume-right">
-        <h3>Skill Set</h3>
-        <p id="skill-r">aaaaaaaaaaa</p>
+            <div class="panel-body">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="personal">
+                        <i class="fas fa-user"></i> Personal Info
+                    </button>
+                    <button class="tab-btn" data-tab="experience">
+                        <i class="fas fa-briefcase"></i> Experience
+                    </button>
+                    <button class="tab-btn" data-tab="education">
+                        <i class="fas fa-graduation-cap"></i> Education
+                    </button>
+                    <button class="tab-btn" data-tab="skills">
+                        <i class="fas fa-tools"></i> Skills
+                    </button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Personal Info Tab -->
+                    <div class="tab-pane active" id="personal-tab">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="form-name">Full Name</label>
+                                <input type="text" id="form-name" placeholder="e.g. John Doe">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-title">Professional Title</label>
+                                <input type="text" id="form-title" placeholder="e.g. Software Developer">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-contact">Contact Number</label>
+                                <input type="text" id="form-contact" placeholder="e.g. (123) 456-7890">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-email">Email Address</label>
+                                <input type="email" id="form-email" placeholder="e.g. john.doe@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-location">Location</label>
+                                <input type="text" id="form-location" placeholder="e.g. New York, NY">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-website">Portfolio/Website</label>
+                                <input type="text" id="form-website" placeholder="e.g. www.johndoe.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="form-summary">Professional Summary</label>
+                            <textarea id="form-summary" placeholder="Write a brief introduction about yourself and your professional background"></textarea>
+                        </div>
+                        
+                        <div class="form-group profile-upload">
+                            <label>Profile Photo</label>
+                            <div class="upload-area" id="upload-area">
+                                <div class="upload-placeholder" id="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag & drop an image or click to browse</p>
+                                </div>
+                                <div class="preview-container">
+                                    <img id="preview-img" class="hidden">
+                                </div>
+                                <input type="file" id="form-pfp" accept="image/*" class="hidden">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Tab -->
+                    <div class="tab-pane" id="experience-tab">
+                        <div id="experience-container">
+                            <div class="experience-item">
+                                <div class="form-group">
+                                    <label>Job Title</label>
+                                    <input type="text" class="exp-title" placeholder="e.g. Senior Developer">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Company</label>
+                                    <input type="text" class="exp-company" placeholder="e.g. Tech Solutions Inc.">
+                                </div>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Start Date</label>
+                                        <input type="month" class="exp-start">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>End Date</label>
+                                        <input type="month" class="exp-end">
+                                        <div class="checkbox-group">
+                                            <input type="checkbox" class="exp-current" id="current-job-1">
+                                            <label for="current-job-1">I currently work here</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Job Description</label>
+                                    <textarea class="exp-desc" placeholder="Describe your responsibilities and achievements"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="add-experience" class="btn-secondary">
+                            <i class="fas fa-plus"></i> Add Another Experience
+                        </button>
+                    </div>
+                    
+                    <!-- Education Tab -->
+                    <div class="tab-pane" id="education-tab">
+                        <div id="education-container">
+                            <div class="education-item">
+                                <div class="form-group">
+                                    <label>Degree</label>
+                                    <input type="text" class="edu-degree" placeholder="e.g. Bachelor of Science in Computer Science">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Institution</label>
+                                    <input type="text" class="edu-institution" placeholder="e.g. University of Technology">
+                                </div>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Start Year</label>
+                                        <input type="month" class="edu-start">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>End Year</label>
+                                        <input type="month" class="edu-end">
+                                        <div class="checkbox-group">
+                                            <input type="checkbox" class="edu-current" id="current-edu-1">
+                                            <label for="current-edu-1">I'm currently studying here</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="edu-desc" placeholder="Describe your academic achievements, GPA, relevant coursework, etc."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="add-education" class="btn-secondary">
+                            <i class="fas fa-plus"></i> Add Another Education
+                        </button>
+                    </div>
+                    
+                    <!-- Skills Tab -->
+                    <div class="tab-pane" id="skills-tab">
+                        <div class="form-group">
+                            <label>Add Skills (press Enter after each skill)</label>
+                            <input type="text" id="skill-input" placeholder="e.g. JavaScript, Project Management, Photoshop">
+                        </div>
+                        
+                        <div id="skills-container" class="skills-tags"></div>
+                        
+                        <div class="form-group">
+                            <label>Template Style</label>
+                            <div class="template-selector">
+                                <div class="template-option active" data-template="modern">
+                                    <img src="/api/placeholder/200/120" alt="Modern Template">
+                                    <span>Modern</span>
+                                </div>
+                                <div class="template-option" data-template="classic">
+                                    <img src="/api/placeholder/200/120" alt="Classic Template">
+                                    <span>Classic</span>
+                                </div>
+                                <div class="template-option" data-template="minimal">
+                                    <img src="/api/placeholder/200/120" alt="Minimal Template">
+                                    <span>Minimal</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Color Theme</label>
+                            <div class="color-selector">
+                                <div class="color-option active" data-color="blue" style="background-color: #4361ee;"></div>
+                                <div class="color-option" data-color="green" style="background-color: #2a9d8f;"></div>
+                                <div class="color-option" data-color="purple" style="background-color: #7209b7;"></div>
+                                <div class="color-option" data-color="orange" style="background-color: #e76f51;"></div>
+                                <div class="color-option" data-color="red" style="background-color: #e63946;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button id="prev-btn" class="btn-secondary hidden">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button id="next-btn" class="btn-primary">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button id="generate-resume" class="btn-success hidden">
+                        <i class="fas fa-wand-magic-sparkles"></i> Generate Resume
+                    </button>
+                </div>
+            </div>
+        </div>
         
-        <h3>Academic Qualifications</h3>
-        <p id="acad-r">aaaaaaaaaa</p>
+        <!-- Resume Preview Section -->
+        <div class="panel hidden" id="resume-preview">
+            <div class="panel-header">
+                <div class="resume-actions">
+                    <button id="back-to-edit" class="btn-secondary">
+                        <i class="fas fa-pencil"></i> Edit Resume
+                    </button>
+                    <button id="print-resume" class="btn-success">
+                        <i class="fas fa-print"></i> Print Resume
+                    </button>
+                </div>
+            </div>
+            
+            <div class="panel-body">
+                <div id="resume-document" class="resume-template modern-template">
+                    <!-- Header Section -->
+                    <div class="resume-header">
+                        <div class="profile-photo">
+                            <img id="resume-img" src="/api/placeholder/200/200" alt="Profile Photo">
+                        </div>
+                        <div class="header-content">
+                            <h1 id="resume-name">John Doe</h1>
+                            <h2 id="resume-title">Software Developer</h2>
+                            <div class="resume-contact">
+                                <div class="contact-item" id="resume-email-container">
+                                    <i class="fas fa-envelope"></i>
+                                    <span id="resume-email">john.doe@example.com</span>
+                                </div>
+                                <div class="contact-item" id="resume-phone-container">
+                                    <i class="fas fa-phone"></i>
+                                    <span id="resume-phone">(123) 456-7890</span>
+                                </div>
+                                <div class="contact-item" id="resume-location-container">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span id="resume-location">New York, NY</span>
+                                </div>
+                                <div class="contact-item" id="resume-website-container">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="resume-website">www.johndoe.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Resume Content -->
+                    <div class="resume-body">
+                        <div class="resume-section" id="summary-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-user"></i> Professional Summary
+                            </h3>
+                            <p id="resume-summary">Experienced software developer with a passion for creating efficient, scalable applications. Skilled in multiple programming languages and frameworks with a focus on delivering high-quality code.</p>
+                        </div>
+                        
+                        <div class="resume-section" id="experience-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-briefcase"></i> Work Experience
+                            </h3>
+                            <div id="resume-experience">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="resume-section" id="education-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-graduation-cap"></i> Education
+                            </h3>
+                            <div id="resume-education">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="resume-section" id="skills-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-tools"></i> Skills
+                            </h3>
+                            <div id="resume-skills" class="skills-list">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
-    <div>
-        <button onclick="print()">Print Resume</button>
-    </div>
-</div>
+    <footer>
+        <div class="container">
+            <p>&copy; Professional Resume Builder. Create impressive resumes in minutes.</p>
+        </div>
+    </footer>
 
-    
     <script src="script.js"></script>
 </body>
 </html>
